@@ -1,0 +1,26 @@
+.App {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.App-header {
+		font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+		h2 {
+			color: chartreuse;
+			font-weight: bold;
+		}
+
+		p {
+			color: aquamarine;
+			font-style: italic;
+		}
+
+		#musk {
+			margin: auto;
+			display: block;
+			height: 400;
+			width: 600;
+		}
+	}
+}

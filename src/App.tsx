@@ -1,26 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import musk from './images/elon-musk-memes-.jpg';
+import './App.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+	return (
+		<div className="App">
+			<header className="App-header">
+				<h2>SpaceX Rocket Launch History </h2>
+				<p>Elon Musk is spaced out, breh...</p>
+        <img id="musk" src={musk} alt="musk-breh" />
+			</header>
+		</div>
+	);
+};
 
 export default App;
