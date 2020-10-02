@@ -1,6 +1,7 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
+import Launches from './components/Launches/Launches'
 import History from './components/History/History'
 import musk from './images/elon-musk-memes-.jpg';
 import './App.scss';
@@ -20,6 +21,7 @@ const App: React.FC = () => {
         <img id="musk" src={musk} alt="musk-breh" />
 			</header>
 			<History />
+			<Launches />
 		</div>
 		</ApolloProvider>
 	);
