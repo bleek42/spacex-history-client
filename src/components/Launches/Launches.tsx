@@ -1,6 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { useQuery, gql } from '@apollo/client';
 
-const Launches = () => {
+interface Launches {
+  
+}
+
+const Launches: React.FC = () => {
+
+
   return (
     <div>
       <header>
