@@ -6,7 +6,7 @@ import musk from './images/elon-musk-memes-.jpg';
 import './App.scss';
 
 const client = new ApolloClient({
-	uri: 'http://localhost:4000',
+	uri: 'http://localhost:4000/graphql',
 	cache: new InMemoryCache()
 })
 
