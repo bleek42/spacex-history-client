@@ -39,14 +39,15 @@ const Launches: React.FC = () => {
 			) : (
 				<div>
 					{data.launches.map((item) => (
-						<LaunchItem
-							key={item.flightNum}
-							flightNum={item.flightNum}
-							mission={item.mission}
-							year={item.year}
-							date={item.date}
-							success={item.success}
-						/>
+						console.log(item)
+						// <LaunchItem
+						// 	key={item.flightNum}
+						// 	flightNum={item.flightNum}
+						// 	mission={item.mission}
+						// 	year={item.year}
+						// 	date={item.date}
+						// 	success={item.success}
+						// />
 					))}
 				</div>
 			)}
