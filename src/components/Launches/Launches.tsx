@@ -41,6 +41,7 @@ const Launches: React.FC = () => {
 					{data.launches.map((item) => (
 						<LaunchItem
 							key={item.flightNum}
+							flightNum={item.flightNum}
 							mission={item.mission}
 							year={item.year}
 							date={item.date}
