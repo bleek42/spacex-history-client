@@ -20,6 +20,7 @@ const LAUNCHES_QUERY = gql`
     launches {
       flight_number
       mission_name
+			launch_year
       launch_date_local
       launch_success
     }
@@ -27,8 +28,8 @@ const LAUNCHES_QUERY = gql`
 `;
 
 const Launches: React.FC = () => {
-  const { data, loading } = useQuery<LaunchesState>(LAUNCHES_QUERY);
-
+	const { data, loading } = useQuery<LaunchesState>(LAUNCHES_QUERY);
+	
   return (
 		<div>
 			<header>
@@ -38,17 +39,22 @@ const Launches: React.FC = () => {
 				<h4>loading...</h4>
 			) : (
 				<div>
-					{data.launches.map((item) => (
-						console.log(item)
-						// <LaunchItem
-						// 	key={item.flightNum}
-						// 	flightNum={item.flightNum}
-						// 	mission={item.mission}
-						// 	year={item.year}
-						// 	date={item.date}
-						// 	success={item.success}
-						// />
-					))}
+					<ul>
+					{data.launches.map((item, idx) => {
+						
+						return (
+						<li key={idx}>{item.mission}</li>
+							// <LaunchItem
+							// 	key={item.flightNum}
+							// 	flightNum={item.flightNum}
+							// 	mission={item.mission}
+							// 	year={item.year}
+							// 	date={item.date}
+							// 	success={item.success}
+							// />
+						)						
+					})}
+					</ul>
 				</div>
 			)}
 		</div>
