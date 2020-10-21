@@ -5,7 +5,7 @@ import Rockets from './components/Rockets/Rockets';
 import Launches from './components/Launches/Launches';
 import History from './components/History/History';
 import musk from './images/elon-musk-memes-.jpg';
-import './App.scss';
+import NavSearchBar from './components/NavSearchBar/NavSearchBar';
 
 const client = new ApolloClient({
 	uri: 'http://localhost:4000/graphql',
@@ -15,16 +15,13 @@ const client = new ApolloClient({
 const App: React.FC = () => {
 	return (
 		<ApolloProvider client={client}>
+			<NavSearchBar />
 			<div className="App">
-			<header className="App-header">
-				<h2>SpaceX Rocket Launch History </h2>
-				<p>Elon Musk is spaced out, breh...</p>
-        <img id="musk" src={musk} alt="musk-breh" />
-			</header>
+				<img id="musk" src={musk} alt="musk-breh" />
+			</div>
 			<History />
 			<Rockets />
 			<Launches />
-		</div>
 		</ApolloProvider>
 	);
 };

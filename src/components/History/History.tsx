@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
+import {AppBar, Grid, GridList, IconButton, Toolbar, Typography,  } from '@material-ui/core';
 
 interface HistoryData {
 	readonly title: string | null;
@@ -25,11 +26,17 @@ const History: React.FC = () => {
 	const { data, loading, error } = useQuery<HistoryState>(HISTORY_QUERY);
 
 	return (
-		<div>
-			<header>
-				<h1>SpaceX Historic milestones</h1>
-			</header>
-			<div>
+		<Grid
+			container
+			direction="row"
+			justify="flex-start"
+			alignItems="flex-start"
+		>
+		
+				<Typography variant="h4" >
+					Space-X Historic MileStone Timeline
+				</Typography>
+
 				<section>
 					{loading && (
 						<h4>loading...</h4>
@@ -39,32 +46,19 @@ const History: React.FC = () => {
 							{data.history.map((item, idx) => (
 								<li key={idx}>
 									<h4>{item.title}</h4>
-									<p>{item.date}</p>
 									<details>
-										<summary>
-											{item.details}
-										</summary>
+										<summary>{item.date}</summary>
+										<p>{item.details}</p>
 									</details>
 								</li>
 							))}
 						</ul>
 					)}
-					{/* {loading ? (
-						<h4>loading...</h4>
-					) : (
-						<ul>
-							{data.history.map((item, idx) => (
-								<li key={idx}>
-									<h5>{item.title}</h5>
-									<p>{item.date}</p>
-									<p>{item.details}</p>
-								</li>
-							))}
-						</ul>
-					)} */}
+					{error && (
+						<h4>{error} error has occured: please refresh! </h4>
+					)}
 				</section>
-			</div>
-		</div>
+		</Grid>
 	);
 };
 

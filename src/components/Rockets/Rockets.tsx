@@ -31,9 +31,7 @@ const Rockets: React.FC = () => {
 				<h4>SpaceX Rockets</h4>
 			</header>
 			<section>
-				{loading && (
-					<h4>loading rockets...</h4>
-				)}
+				{loading && <h4>loading rockets...</h4>}
 				{error && (
 					<>
 						<h4>{error}</h4>
@@ -43,40 +41,16 @@ const Rockets: React.FC = () => {
 				{data && (
 					<>
 						<ul>
-							{data.rockets.map((item, idx) => {
-								// const values = Object.values(item)
-								return (
-									<li key={idx}>
-										<h4>{Object.values(item)}</h4>
-									</li>
-								)
-							})}
+							{data.rockets.map((item, idx) => (
+								<li key={idx}>
+									<h4>{Object.values(item)}</h4>
+								</li>
+							))}
 						</ul>
 					</>
 				)}
 			</section>
 		</div>
-		// <div>
-		// 	<header>
-		// 		<h3>SpaceX Rockets</h3>
-		// 	</header>
-		// 	{loading ? (
-		// 		<h4>loading...</h4>
-		// 	) : (
-		// 		<ul>
-		// 				{data.rockets.map((item, idx) => {
-		// 					console.log(item.id);
-		// 				return (
-		// 					<li key={idx}>
-		// 						<h5>{item.name}</h5>
-		// 						<p>{item.id}</p>
-		// 						<p>{item.type}</p>
-		// 					</li>
-		// 				);
-		// 			})}
-		// 		</ul>
-		// 	)}
-		// </div>
 	);
 };
 
