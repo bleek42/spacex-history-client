@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import {
   AppBar,
@@ -11,6 +11,9 @@ import {
   GridListTileBar,
   ListSubheader,
   LinearProgress,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@material-ui/core";
 
 interface HistoryData {
@@ -34,45 +37,76 @@ const HISTORY_QUERY = gql`
 `;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: 2,
-  },
+  root: {},
 
   header: {
     border: "3px solid black",
-    borderRadius: "20% 60%",
+    borderRadius: "40% 60%",
   },
 
-  gridList: {
-    width: 800,
-    height: 650,
+  accordion: {
+    border: "2px solid black",
+    boxShadow: "none",
+
+    "&:not(:lasthild-c)": {
+      borderBottom: 0,
+    },
+
+    "&:before": {
+      display: "none",
+    },
+
+    "&$expanded": {
+      margin: "auto",
+    },
+
+    accordionSummary: {
+      margin: "2px",
+    },
+
+    accordionDetails: {
+      padding: "3px 3px",
+    },
   },
 }));
 
 const History: React.FC = () => {
   const { data, loading, error } = useQuery<HistoryState>(HISTORY_QUERY);
+  const [toggle, setToggle] = useState(false);
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Typography className={classes.header} variant="h4">
-        Space-X Historic MileStone Timeline
-      </Typography>
-
+      
+      
       {loading && <LinearProgress />}
       {error && <Typography variant="h4">error occured</Typography>}
       {data && (
-        <GridList cellHeight={400} cols={3} className={classes.gridList}>
-          {data.history.map((item, idx) => (
-            <GridListTile key={idx}>
-              <img alt="history-img" />
-              <GridListTileBar
-                title={item.title}
-                subtitle={<span>by: {item.date}</span>}
-              ></GridListTileBar>
-            </GridListTile>
-          ))}
-        </GridList>
+        <Typography className={classes.header} variant="h4">
+        Space-X Historic MileStone Timeline
+          {data.history.map((item, idx) => {
+            return (
+              <Accordion
+                key={idx}
+                square
+                expanded={toggle ? true : false}
+                // onClick={(ev) => setToggle(true)}
+              >
+                <AccordionSummary>{item.title}: {item.date} </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>{item.details}</Typography>
+                </AccordionDetails>
+              </Accordion>
+            );
+            // <GridListTile key={idx}>
+            //   <img alt="history-img" />
+            //   <GridListTileBar
+            //     title={item.title}
+            //     subtitle={<span>by: {item.date}</span>}
+            //   ></GridListTileBar>
+            // </GridListTile>
+          })}
+        </Typography>
       )}
       {/* <section>
         {loading && <h4>loading...</h4>}

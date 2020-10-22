@@ -14,6 +14,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import { BrowserRouter as Router, Link, Switch } from "react-router-dom";
 import History from "../History/History";
+import { Launch } from "@material-ui/icons";
+import Rockets from "../Rockets/Rockets";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -89,11 +91,17 @@ export default function NavSearchBar() {
             >
               <MenuIcon />
               <Menu open={toggle} onClose={() => setToggle(false)}>
-                <MenuItem>
-                  <Switch>
-                    <Link to="/" component={History} />
-                  </Switch>
-                </MenuItem>
+                {/* <Switch>
+                  <MenuItem>
+                    <Link to="/history" component={History} />
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to="/launches" component={Launch} />
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to="/rockets" component={Rockets} />
+                  </MenuItem>
+                </Switch> */}
               </Menu>
             </IconButton>
             <Typography className={classes.title} variant="h6" noWrap>

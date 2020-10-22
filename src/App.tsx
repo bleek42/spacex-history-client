@@ -19,8 +19,9 @@ const App: React.FC = () => {
       <div className="App">
         <img id="musk" src={musk} alt="musk-breh" />
       </div>
-      <Rockets />
-      <Launches />
+      <div>
+        <History />
+      </div>
     </ApolloProvider>
   );
 };
