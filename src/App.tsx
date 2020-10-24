@@ -1,14 +1,14 @@
-import React from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import React from 'react';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
-import Rockets from "./components/Rockets/Rockets";
-import Launches from "./components/Launches/Launches";
-import History from "./components/History/History";
-import musk from "./images/elon-musk-memes-.jpg";
-import NavSearchBar from "./components/NavSearchBar/NavSearchBar";
+import Rockets from './components/Rockets/Rockets';
+import Launches from './components/Launches/Launches';
+import History from './components/History/History';
+import musk from './images/elon-musk-memes-.jpg';
+import NavSearchBar from './components/NavSearchBar/NavSearchBar';
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: 'http://localhost:4000/graphql',
   cache: new InMemoryCache(),
 });
 
@@ -20,7 +20,7 @@ const App: React.FC = () => {
         <img id="musk" src={musk} alt="musk-breh" />
       </div>
       <div>
-        <History />
+        <Launches />
       </div>
     </ApolloProvider>
   );
